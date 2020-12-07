@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add trip</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<h1>Add trip</h1>
+	<a th:href="@{/trip}">Return</a> <br/> <br/>
+	<form th:action="@{/trip/add}" method="POST" th:object="${trip}">
+				<label>Driver</label>
+				<input type="text" th:field="*{driver.id}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('driver')}" th:errors="*{driver.id}">CC Num Error</span> 
+				<br/>
+				<label>Sub driver</label>
+				<input type="text" th:field="*{subdriver.id}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('subdriver')}" th:errors="*{subdriver.id}">CC Num Error</span>
+				<br/>
+				<label>Car</label>
+				<input type="text" th:field="*{car.id}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('car')}" th:errors="*{car.id}">CC Num Error</span>
+				<br/>
+				<label>Route</label>
+				<input type="text" th:field="*{route.id}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('route')}" th:errors="*{route.id}">CC Num Error</span>
+				<br/>
+				<label>Number of passengers</label>
+				<input type="text" th:field="*{numberofpassengers}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('numberofpassengers')}" th:errors="*{numberofpassengers}">CC Num Error</span>
+				<br/>
+				<label>Price</label>
+				<input type="text" th:field="*{price}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">CC Num Error</span>
+				<br/>
+				<label>Created at</label>
+				<input type="text" th:field="*{createdat}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('createdat')}" th:errors="*{createdat}">CC Num Error</span>	
+				<br/>
+			<input type="submit" value="Add"/>
+		
+	</form>
+</body>
+</html>

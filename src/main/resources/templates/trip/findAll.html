@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Trip</title>
+
+<!-- Bootstrap -->
+<link
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+    rel="stylesheet" />
+<!-- Custom style -->
+<!-- <link href="../static/css/style.css" th:href="@{/css/style.css}"
+    rel="stylesheet" /> -->
+
+<link rel="stylesheet" th:href="@{/styles.css}" />
+
+</head>
+<body>
+
+	<h1>trip list!</h1>
+	
+	<a th:href="@{/}">Home</a> <br/> <br/>
+
+	<form method="GET" th:action="@{/trip/find}"> 
+		<label>Tìm kiếm</label>
+		<input name="keyword" th:value="${keyword}"/>
+		<input type="submit" value="Search"/> 
+	</form>
+	
+	<form method="GET" th:action="@{/trip/add}"> 
+		<br>
+		<input type="submit" value="Add"/> 
+	</form>
+	
+	
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Driver</th>
+			<th>Sub driver</th>
+			<th>Car</th>
+			<th>Route</th>
+			<th>Number of passengers</th>
+			<th>Price</th>
+			<th>Created at</th>
+			<th></th>
+			<th></th>
+		</tr>
+		
+		<tr th:each="trip : ${trips}">
+			<td th:text="${trip.id}"></td>
+			<td th:text="${trip.driver.name}"></td>
+			<td th:text="${trip.subdriver.name}"></td>
+			<td th:text="${trip.car.brandname}"></td>
+			<td th:text="${trip.route.id} + ' ' + ${ trip.route.start} +'-'+ ${trip.route.end}"></td>
+			<td th:text="${trip.numberofpassengers}"></td>
+			<td th:text="${trip.price}"></td>
+			<td th:text="${trip.createdat}"></td>
+			<td> 
+				<a th:href="@{/trip/edit?id={id}(id=${trip.id})}">Edit</a>  
+               
+			</td>
+			
+			<td> 
+				 <a th:href="@{/trip/delete?id={id}(id=${trip.id})}">Delete</a>
+			</td>
+			
+			
+		</tr>	
+	</table>
+</body>
+</html>

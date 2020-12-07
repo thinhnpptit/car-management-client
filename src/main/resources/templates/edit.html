@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Car</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<h1>Edit Car</h1>
+	<a th:href="@{/car}">Return</a> <br/> <br/>
+	<form th:action="@{/car/edit/save}" method="GET" th:object="${car}">
+				<label>Id</label>
+				<input type="text" th:field="*{id}" readonly/>
+				<br/>
+				<label>Brand Name</label>
+				<input type="text" th:field="*{brandname}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('brandname')}" th:errors="*{brandname}">CC Num Error</span> 
+				<br/>
+				<label>Plate Number</label>
+				<input type="text" th:field="*{platenumber}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('platenumber')}" th:errors="*{platenumber}">CC Num Error</span>
+				<br/>
+				<label>Color</label>
+				<input type="text" th:field="*{color}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">CC Num Error</span>
+				<br/>
+				<label>Model</label>
+				<input type="text" th:field="*{model}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">CC Num Error</span>
+				<br/>
+				<label>Number Of Seats</label>
+				<input type="text" th:field="*{seatnumber}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('seatnumber')}" th:errors="*{seatnumber}">CC Num Error</span>
+				<br/>
+				<label>Used Year</label>
+				<input type="text" th:field="*{usedyear}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('usedyear')}" th:errors="*{usedyear}">CC Num Error</span>
+				<br/>
+				<label>Last Maintaince Date</label>
+				<input type="text" th:field="*{lastmaintaincedate}"/>
+				<span class="validationError" th:if="${#fields.hasErrors('lastmaintaincedate')}" th:errors="*{lastmaintaincedate}">CC Num Error</span>	
+				<br/>
+			<input type="submit" value="Add"/>
+		
+	</form>
+</body>
+</html>

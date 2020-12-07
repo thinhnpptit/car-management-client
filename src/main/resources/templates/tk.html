@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Car</title>
+
+</head>
+<body>
+	<h1>Luong!</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Luong</th>
+		</tr>
+		
+		<tr th:each="pair : ${pairs}">
+			<td th:text="${pair.getFirst.getName}">Luong</td>
+			<td th:text="${pair.getSecond}">Luong</td>
+		</tr>
+		
+		
+	</table>
+</body>
+</html>

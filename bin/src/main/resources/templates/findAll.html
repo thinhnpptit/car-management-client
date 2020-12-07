@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Car</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+
+	<h1>Car list!</h1>
+	
+	<a th:href="@{/}">Home</a> <br/> <br/>
+
+	<form method="GET" th:action="@{/car/find}"> 
+		<label>Tìm kiếm</label>
+		<input name="keyword" th:value="${keyword}"/>
+		<input type="submit" value="Search"/> 
+	</form>
+	
+	<form method="GET" th:action="@{/car/add}"> 
+		<br>
+		<input type="submit" value="Add"/> 
+	</form>
+	
+	
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Brand Name</th>
+			<th>Plate Number</th>
+			<th>Color</th>
+			<th>Model</th>
+			<th>Number Of Seats</th>
+			<th>Used Year</th>
+			<th>Last Maintaince Date</th>
+			<th></th>
+			<th></th>
+		</tr>
+		
+		<tr th:each="car : ${cars}">
+			<td th:text="${car.id}">CAR</td>
+			<td th:text="${car.brandname}">Brand Name</td>
+			<td th:text="${car.platenumber}">Plate Number</td>
+			<td th:text="${car.color}">Color</td>
+			<td th:text="${car.model}">Model</td>
+			<td th:text="${car.seatnumber}">Number Of Seats</td>
+			<td th:text="${car.usedyear}">Used Year</td>
+			<td th:text="${car.lastmaintaincedate}">Last Maintaince Date</td>
+			<td> 
+				<a th:href="@{/car/edit?id={id}(id=${car.id})}">Edit</a>  
+               
+			</td>
+			
+			<td> 
+				 <a th:href="@{/car/delete?id={id}(id=${car.id})}">Delete</a>
+			</td>
+			
+			
+		</tr>	
+	</table>
+</body>
+</html>
